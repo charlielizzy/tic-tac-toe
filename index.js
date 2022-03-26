@@ -1,5 +1,5 @@
 class Board {
-  constructor(state = ["O", "X", "O", "X", "O", "O", "X", "O", "X"]) {
+  constructor(state = ["O", "X", "O", "X", "X", "O", "X", "O", "O"]) {
     this.state = state;
   }
 
@@ -81,31 +81,59 @@ class Board {
 
   gameWon() {
     let gameWon;
-    if (((this.state[0] === this.state[1]) === this.state[2]) !== "") {
-      gameWon = true;
-    } else if (((this.state[3] === this.state[4]) === this.state[5]) !== "") {
-      gameWon = true;
-    } else if (((this.state[6] === this.state[7]) === this.state[8]) !== "") {
-      gameWon = true;
-    } else if (((this.state[0] === this.state[3]) === this.state[6]) !== "") {
-      gameWon = true;
-    } else if (((this.state[1] === this.state[4]) === this.state[7]) !== "") {
-      gameWon = true;
-    } else if (((this.state[2] === this.state[5]) === this.state[8]) !== "") {
-      gameWon = true;
-    } else if (((this.state[0] === this.state[4]) === this.state[8]) !== "") {
-      gameWon = true;
-    } else if (((this.state[2] === this.state[4]) === this.state[6]) !== "") {
-      gameWon = true;
+    if (
+      this.state[0] === this.state[1] &&
+      this.state[1] === this.state[2] &&
+      this.state[2] !== ""
+    ) {
+      gameWon = { winner: this.state[0], direction: "horizontal" };
+    } else if (
+      this.state[3] === this.state[4] &&
+      this.state[4] === this.state[5] &&
+      this.state[5] !== ""
+    ) {
+      gameWon = { winner: this.state[3], direction: "horizontal" };
+    } else if (
+      this.state[6] === this.state[7] &&
+      this.state[7] === this.state[8] &&
+      this.state[8] !== ""
+    ) {
+      gameWon = { winner: this.state[6], direction: "horizontal" };
+    } else if (
+      (this.state[0] === this.state[3]) & (this.state[3] === this.state[6]) &&
+      this.state[6] !== ""
+    ) {
+      gameWon = { winner: this.state[0], direction: "vertical" };
+    } else if (
+      this.state[1] === this.state[4] &&
+      this.state[4] === this.state[7] &&
+      this.state[7] !== ""
+    ) {
+      gameWon = { winner: this.state[1], direction: "vertical" };
+    } else if (
+      this.state[2] === this.state[5] &&
+      this.state[5] === this.state[8] &&
+      this.state[8] !== ""
+    ) {
+      gameWon = { winner: this.state[2], direction: "vertical" };
+    } else if (
+      this.state[0] === this.state[4] &&
+      this.state[4] === this.state[8] &&
+      this.state[8] !== ""
+    ) {
+      gameWon = { winner: this.state[0], direction: "diagonal" };
+    } else if (
+      this.state[2] === this.state[4] &&
+      this.state[4] === this.state[6] &&
+      this.state[6] !== ""
+    ) {
+      gameWon = { winner: this.state[2], direction: "diagonal" };
+    } else if (this.isFull()) {
+      gameWon = { winner: "draw", direction: null };
     } else {
-      gameWon = false;
+      gameWon = null;
     }
     return gameWon;
-    // else (gameWon === true) {
-    //   return "game won";
-    //   // } else if (gameWon === false) {
-    //   //   return "game draw";
-    // }
   }
 }
 
