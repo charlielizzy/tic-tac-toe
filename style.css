@@ -1,0 +1,18 @@
+body {
+  background: lightgrey;
+}
+.container {
+  /* border: black 1px solid; */
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 304px;
+}
+
+.section {
+  width: 100px;
+  height: 100px;
+  border: black solid 1px;
+  display: grid;
+}
