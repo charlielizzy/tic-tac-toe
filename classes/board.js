@@ -87,6 +87,7 @@ export default class Board {
     } else {
       this.state[index] = newXO;
       this.printBoard();
+      this.loadBoard();
       if (index > 8 || index < 0) {
         throw new Error("Position does not exist");
       }
@@ -161,5 +162,7 @@ export default class Board {
       gameWon = null;
     }
     return gameWon;
+    // const gameWonStatement = document.getElementById("game-won");
+    // gameWonStatement = `The game was won by ${gameWon.winner} in the direction ${gameWon.direction}`;
   }
 }
