@@ -1,0 +1,25 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "tic tac toe test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlielizzy/tic-tac-toe.git"
+  },
+  "author": "Charlotte Walker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlielizzy/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/charlielizzy/tic-tac-toe#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^27.5.1",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^27.5.1"
+  }
+}
