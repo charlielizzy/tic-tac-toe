@@ -84,6 +84,8 @@ export default class Board {
       throw new Error("Invalid character - enter X or O");
     }
     if (this.state[index] !== "") {
+      const result = document.getElementById("result");
+      result.innerText = "This space is full";
       throw new Error("This space is full");
     } else {
       this.state[index] = newXO;
