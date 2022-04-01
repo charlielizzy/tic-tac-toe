@@ -1,6 +1,6 @@
 export default class Board {
   constructor(
-    state = ["", "X", "", "", "", "", "O", "", ""],
+    state = ["", "", "", "", "", "", "", "", ""],
     currentPlayer = "X"
   ) {
     this.state = state;
@@ -26,6 +26,7 @@ export default class Board {
         } else if (this.currentPlayer === "O") {
           this.currentPlayer = "X";
         }
+        console.log(this.gameWon());
       });
     });
   }
@@ -161,8 +162,15 @@ export default class Board {
     } else {
       gameWon = null;
     }
-    return gameWon;
-    // const gameWonStatement = document.getElementById("game-won");
-    // gameWonStatement = `The game was won by ${gameWon.winner} in the direction ${gameWon.direction}`;
+
+    const result = document.getElementById("result");
+
+    if (gameWon === null) {
+      result.innerText = "";
+    } else if (gameWon.winner === "draw") {
+      result.innerText = "The game is a draw";
+    } else {
+      result.innerText = `The winner of the game is ${gameWon.winner} and the direction is ${gameWon.direction}`;
+    }
   }
 }
