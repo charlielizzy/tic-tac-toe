@@ -101,6 +101,7 @@ export default class Board {
 
   gameWon() {
     let gameWon;
+
     if (this.state[0] === this.state[1] && this.state[1] === this.state[2] && this.state[2] !== '') {
       gameWon = { winner: this.state[0], direction: 'horizontal' };
     } else if (this.state[3] === this.state[4] && this.state[4] === this.state[5] && this.state[5] !== '') {
@@ -122,7 +123,12 @@ export default class Board {
     } else {
       gameWon = null;
     }
-
+    // const gameWinner = gameWon.winner;
+    // const gameDirection = gameWon.direction;
     return gameWon;
+  }
+
+  resetBoard() {
+    this.state = ['', '', '', '', '', '', '', '', ''];
   }
 }
