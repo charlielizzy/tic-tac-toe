@@ -1,13 +1,6 @@
 import Board from './classes/board.js';
 const board = new Board();
 
-// board.addNewState("X", 4);
-// board.printBoard();
-
-// board.availableIndex();
-
-console.log(board.gameWon());
-
 const loadBoard = (boardState) => {
   const squares = document.querySelectorAll('.section');
   squares.forEach((square) => {
@@ -17,5 +10,26 @@ const loadBoard = (boardState) => {
   });
 };
 
-loadBoard(board.state);
-board.addClickEvent();
+document.addEventListener('DOMContentLoaded', () => {
+  loadBoard(board.state);
+
+  const squares = document.querySelectorAll('.section');
+  squares.forEach((square, index) => {
+    square.addEventListener('click', () => {
+      board.addClickEvent(index);
+      loadBoard(board.state);
+      resultMessage();
+    });
+  });
+});
+
+const result = document.getElementById('result');
+const resultMessage = () => {
+  if (board.gameWon() === null) {
+    result.innerText = '';
+  } else if (board.gameWon() === { winner: 'draw', direction: null }) {
+    result.innerText = 'The game is a draw';
+  } else {
+    result.innerText = `The winner of the game is WINNER and the direction is DIRECTION`;
+  }
+};

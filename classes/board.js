@@ -13,20 +13,13 @@ export default class Board {
   //   });
   // }
 
-  addClickEvent() {
-    const gridItems = document.querySelectorAll('.section');
-    gridItems.forEach((item, index) => {
-      item.addEventListener('click', (e) => {
-        this.addNewState(this.currentPlayer, index);
-        if (this.currentPlayer === 'X') {
-          this.currentPlayer = 'O';
-        } else if (this.currentPlayer === 'O') {
-          this.currentPlayer = 'X';
-        }
-
-        // console.log(this.gameWon());
-      });
-    });
+  addClickEvent(index) {
+    this.addNewState(this.currentPlayer, index);
+    if (this.currentPlayer === 'X') {
+      this.currentPlayer = 'O';
+    } else if (this.currentPlayer === 'O') {
+      this.currentPlayer = 'X';
+    }
   }
 
   printBoard() {
@@ -129,16 +122,6 @@ export default class Board {
     } else {
       gameWon = null;
     }
-
-    // const result = document.getElementById('result');
-
-    // if (gameWon === null) {
-    //   result.innerText = '';
-    // } else if (gameWon.winner === 'draw') {
-    //   result.innerText = 'The game is a draw';
-    // } else {
-    //   result.innerText = `The winner of the game is ${gameWon.winner} and the direction is ${gameWon.direction}`;
-    // }
 
     return gameWon;
   }
