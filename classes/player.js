@@ -1,24 +1,29 @@
 // import Board from './classes/board.js';
 
 export default class Player {
-  constructor(name, wins = 0, losses = 0, draws = 0) {
+  constructor(name, XOvalue = '', wins = 0, losses = 0, draws = 0) {
     this.name = name;
     this.wins = wins;
     this.losses = losses;
     this.draws = draws;
+    this.XOvalue = XOvalue;
   }
 
   addWin() {
-    //if winner of game is X, make playerX wins go up by one
-    //if winner of game is O, make playerO wins go up by one
+    //wins goes up by one
+    this.wins += 1;
+    return this.wins;
   }
 
   addLoss() {
-    //if winner of game is X, make playerO losses go up by one
-    //if winner of game is O, make playerX losses go up by one
+    //losses go up by one
+    this.losses += 1;
+    return this.losses;
   }
 
   addDraw() {
-    //if game result is draw, both playerO and playerX draws go up by one
+    //players draws go up by one
+    this.draws += 1;
+    return this.draws;
   }
 }

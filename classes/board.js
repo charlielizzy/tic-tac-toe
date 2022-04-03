@@ -4,15 +4,6 @@ export default class Board {
     this.currentPlayer = currentPlayer;
   }
 
-  // loadBoard() {
-  //   const squares = document.querySelectorAll('.section');
-  //   squares.forEach((square) => {
-  //     const squareIndex = square.dataset.index;
-  //     const currentValue = this.state[squareIndex];
-  //     square.innerHTML = `<p>${currentValue}</p>`;
-  //   });
-  // }
-
   addClickEvent(index) {
     this.addNewState(this.currentPlayer, index);
     if (this.currentPlayer === 'X') {
@@ -73,8 +64,6 @@ export default class Board {
     if (newXO !== 'X' && newXO !== 'O') {
       throw new Error('Invalid character - enter X or O');
     } else if (this.state[index] !== '') {
-      // const result = document.getElementById('result');
-      // result.innerText = 'This space is full';
       throw new Error('This space is full');
     } else if (index > 8 || index < 0) {
       throw new Error('Position does not exist');
@@ -82,8 +71,6 @@ export default class Board {
       throw new Error('Position does not exist');
     } else {
       this.state[index] = newXO;
-      // this.printBoard();
-      // this.loadBoard();}
     }
     return this.state;
   }
@@ -123,8 +110,7 @@ export default class Board {
     } else {
       gameWon = null;
     }
-    // const gameWinner = gameWon.winner;
-    // const gameDirection = gameWon.direction;
+
     return gameWon;
   }
 
