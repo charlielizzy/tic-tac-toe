@@ -51,6 +51,7 @@ const resultMessage = () => {
     result.innerText = `The winner of the game is ${resultOutcome.winner} and the direction is ${resultOutcome.direction}`;
     if (resultOutcome.winner === 'X') {
       playerX.addWin();
+      console.log(playerX.wins);
       playerO.addLoss();
     } else if (resultOutcome.winner === 'O') {
       playerO.addWin();
@@ -75,4 +76,4 @@ const fillName = () => {
   playerOName.innerText = `${playerO.name}`;
 };
 
-playerX.fillName();
+// playerX.fillName();
