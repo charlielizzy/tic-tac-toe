@@ -11,7 +11,6 @@ const loadBoard = (boardState) => {
     const currentValue = boardState[squareIndex];
     square.innerHTML = `<p>${currentValue}</p>`;
   });
-  // fillName();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     result.innerText = '';
   });
   fillName();
-  // loadResultGrid();
+  fillScores();
 });
 
 const resultMessage = () => {
@@ -46,27 +45,18 @@ const resultMessage = () => {
     result.innerText = 'The game is a draw';
     playerX.addDraw();
     playerO.addDraw();
-    //load result grid
   } else {
     result.innerText = `The winner of the game is ${resultOutcome.winner} and the direction is ${resultOutcome.direction}`;
     if (resultOutcome.winner === 'X') {
       playerX.addWin();
-      console.log(playerX.wins);
       playerO.addLoss();
     } else if (resultOutcome.winner === 'O') {
       playerO.addWin();
       playerX.addLoss();
     }
-    //load result grid
-    // fillName();
   }
+  fillScores();
 };
-
-//create load result grid function
-// const loadResultGrid = () => {
-//   const resultGrid = document.getElementById('scores');
-//   fillName();
-// };
 
 // create function to fill name in results grid with name in player object inside load result function
 const fillName = () => {
@@ -76,4 +66,19 @@ const fillName = () => {
   playerOName.innerText = `${playerO.name}`;
 };
 
-// playerX.fillName();
+// create function to fill scores in results grid
+const fillScores = () => {
+  const playerXWins = document.getElementById('playerXWins');
+  playerXWins.innerText = `${playerX.wins}`;
+  const playerXLosses = document.getElementById('playerXLosses');
+  playerXLosses.innerText = `${playerX.losses}`;
+  const playerXDraws = document.getElementById('playerXDraws');
+  playerXDraws.innerText = `${playerX.draws}`;
+
+  const playerOWins = document.getElementById('playerOWins');
+  playerOWins.innerText = `${playerO.wins}`;
+  const playerOLosses = document.getElementById('playerOLosses');
+  playerOLosses.innerText = `${playerO.losses}`;
+  const playerODraws = document.getElementById('playerODraws');
+  playerODraws.innerText = `${playerO.draws}`;
+};
