@@ -1,8 +1,8 @@
 import Board from './classes/board.js';
 import Player from './classes/player.js';
 const board = new Board();
-const playerX = new Player('Charlotte', 'X', 0, 0, 0);
-const playerO = new Player('Carina', 'O', 0, 0, 0);
+const playerX = new Player('Char', 0, 0, 0);
+const playerO = new Player('Carina', 0, 0, 0);
 
 const loadBoard = (boardState) => {
   const squares = document.querySelectorAll('.section');
@@ -19,6 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const squares = document.querySelectorAll('.section');
   squares.forEach((square, index) => {
     square.addEventListener('click', () => {
+      // const index = item.dataset.index;
+      // const result = document.getElementById('result');
+
+      // try {
+      //   board.addClickEvent(index);
+      //   result.innerText = '';
+      // } catch (error) {
+      //   result.innerText = 'This space is already filled';
+      // }
       board.addClickEvent(index);
       loadBoard(board.state);
       resultMessage();
@@ -57,6 +66,11 @@ const resultMessage = () => {
   }
   fillScores();
 };
+
+// const printError = () => {
+//   const result = document.getElementById('result');
+//   result.innerText = 'error message';
+// };
 
 // create function to fill name in results grid with name in player object inside load result function
 const fillName = () => {

@@ -66,3 +66,10 @@ test('test which index is available', () => {
   const board = new Board(['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', '']);
   expect(board.availableIndex()).toEqual([8]);
 });
+
+test('when game is already won, filling another input triggers error', () => {
+  const board = new Board(['X', 'X', 'X', '', 'O', 'O', '', '', '']);
+  expect(() => {
+    board.addNewState('X', 3);
+  }).toThrowError('Game already won');
+});

@@ -61,7 +61,9 @@ export default class Board {
   }
 
   addNewState(newXO, index) {
-    if (newXO !== 'X' && newXO !== 'O') {
+    if (this.gameWon() !== null) {
+      throw new Error('Game already won');
+    } else if (newXO !== 'X' && newXO !== 'O') {
       throw new Error('Invalid character - enter X or O');
     } else if (this.state[index] !== '') {
       throw new Error('This space is full');
@@ -116,5 +118,7 @@ export default class Board {
 
   resetBoard() {
     this.state = ['', '', '', '', '', '', '', '', ''];
+    // const resultOutcome = this.gameWon();
+    // this.currentPlayer = resultOutcome.winner;
   }
 }
